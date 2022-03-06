@@ -11,7 +11,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="styles.css" />
-   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Weather Channel 🌡️</title>
   </head>
   <body>
@@ -26,13 +26,22 @@
                   <h3>Friday</h3>
                   <p class="text-gray">
                     <span class="weather-date">March, 04 2022</span>
-                    <span id="city" class="weather-location">Las Vegas, Nevada</span>
+                    <span id="city" class="weather-location"
+                      >Las Vegas, Nevada</span
+                    >
                   </p>
                 </div>
                 <div class="weather-data d-flex">
                   <div class="mr-auto">
-                    <h4 id="temperature" class="display-3">32 <span class="symbol">°</span>C</h4>
-                    <p id="description">Partially Cloudy</p>
+                    <h4 id="temperature" class="display-3">
+                      32 <span class="symbol">°</span>C
+                    </h4>
+                    <span id="description">Partially Cloudy</span>
+                    <br />
+                    <span id="humidity">Humidity: 7%</span>
+                    <br />
+                    <img src="https://i.imgur.com/B9kqOzp.png" height="17px" />
+                    <span id="wind"> 6 km/h </span>
                   </div>
                 </div>
               </div>

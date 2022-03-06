@@ -11,8 +11,18 @@
 } */
 //document.body.style.backgroundColor = "gray";
 function displayTemperature(response) {
+  console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = response.data.main.temp + "°C"; //will prob be removing °C later so user can change between °C and °F
+  let cityElement = document.querySelector("#city");
+  let desctriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  temperatureElement.innerHTML = Math.round(response.data.main.temp) + "°C"; //will prob be removing °C later so user can change between °C and °F
+  cityElement.innerHTML = response.data.name;
+  desctriptionElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML =
+    "Humidity: " + Math.round(response.data.main.humidity) + "%";
+  windElement.innerHTML = Math.round(response.data.wind.speed) + "km/h";
 }
 
 let city = "Las Vegas";

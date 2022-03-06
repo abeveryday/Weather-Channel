@@ -80,9 +80,16 @@ body {
   padding: 0 0 38px;
 }
 
+#description {
+  text-transform: capitalize;
+}
+
 .h3,
 h3 {
   font-size: 1.56rem;
+}
+#temperature {
+  font-size: 55px;
 }
 
 .h1,
