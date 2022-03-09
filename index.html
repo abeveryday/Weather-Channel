@@ -25,14 +25,32 @@
                 <div class="weather-date-location">
                   <h3 id="day">Friday</h3>
                   <p class="text-gray">
-                    <span class="weather-date">March, 04 2022</span>
-                    <span id="city" class="weather-location"
-                      >Las Vegas, Nevada</span
-                    >
+                    <span id="city" class="weather-location">Las Vegas</span>
                   </p>
+                  <form id="search-form">
+                    <div class="row">
+                      <div class="col-9">
+                        <input
+                          type="search"
+                          placeholder="Search a city...."
+                          autofocus="on"
+                          autocomplete="off"
+                          id="city-input"
+                          class="form-control shadow-sm"
+                        />
+                      </div>
+                      <div class="col-3">
+                        <input
+                          type="submit"
+                          value="Search"
+                          class="form-control btn btn-primary shadow-sm"
+                        />
+                      </div>
+                    </div>
+                  </form>
                   <img
                     src="file:///C:/Users/abeve/Downloads/4102326_cloud_sun_sunny_weather_icon.svg"
-                    alt="weather img"
+                    alt="weather icon"
                     id="icon"
                     style="float: right"
                     width="150"
@@ -93,6 +111,12 @@
                 </div>
               </div>
             </div>
+            <p>
+              <a href="https://github.com/abeveryday/Weather-Channel"
+                >Open-source code</a
+              >
+              By: Ashley B
+            </p>
             <!--weather card ends-->
           </div>
         </div>

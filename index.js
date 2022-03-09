@@ -25,7 +25,6 @@ function formatDate(date) {
 }
 
 function displayTemperature(response) {
-  console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
   let desctriptionElement = document.querySelector("#description");
@@ -42,13 +41,26 @@ function displayTemperature(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+}
+
+function search(city) {
+  let apiKey = "740cff2b03b6ff4fa9525993b36f2fc7";
+  let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let city = document.querySelector("#city-input").value;
+  search(city);
 }
 
 let dayElement = document.querySelector("#day");
 const currentTime = new Date();
 dayElement.innerHTML = formatDate(currentTime);
 
-let city = "Las Vegas";
-let apiKey = "740cff2b03b6ff4fa9525993b36f2fc7";
-let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-axios.get(apiUrl).then(displayTemperature);
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("Submit", handleSubmit);
+
+search("Las Vegas");

@@ -39,14 +39,14 @@ body {
 }
 
 .card-weather {
-  background: #e1ecff;
+  background: #d4e1f8;
   background-image: linear-gradient(
     to left bottom,
-    #d6eef6,
-    #dff0fa,
+    #c8e8f3,
+    #d1e6f3,
     #e7f3fc,
-    #eff6fe,
-    #f6f9ff
+    #dee8f5,
+    #e0e5f0
   );
 }
 .card {
