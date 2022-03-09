@@ -31,13 +31,17 @@ function displayTemperature(response) {
   let desctriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
-  // let dayElement = document.querySelector("#day");
+  let iconElement = document.querySelector("#icon");
   temperatureElement.innerHTML = Math.round(response.data.main.temp) + "°C"; //will prob be removing °C later so user can change between °C and °F
   cityElement.innerHTML = response.data.name;
   desctriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML =
     "Humidity: " + Math.round(response.data.main.humidity) + "%";
   windElement.innerHTML = Math.round(response.data.wind.speed) + "km/h";
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 let dayElement = document.querySelector("#day");
