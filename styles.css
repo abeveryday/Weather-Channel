@@ -160,3 +160,12 @@ p {
 .card-weather .weakly-weather .weakly-weather-item i {
   font-size: 1.2rem;
 }
+
+.tempE .active {
+  color: rgb(33, 33, 33);
+  cursor: default;
+}
+
+.tempE .active:hover {
+  text-decoration: none;
+}

@@ -31,7 +31,10 @@ function displayTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
   let iconElement = document.querySelector("#icon");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp) + "°C"; //will prob be removing °C later so user can change between °C and °F
+
+  celTemp = response.data.main.temp;
+
+  temperatureElement.innerHTML = Math.round(celTemp); //will prob be removing °C later so user can change between °C and °F
   cityElement.innerHTML = response.data.name;
   desctriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML =
@@ -56,11 +59,36 @@ function handleSubmit(event) {
   search(city);
 }
 
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  celsiusLink.classList.remove("active");
+  fahrenhetLink.classList.add("active");
+  let tempElement = document.querySelector("#temperature");
+  let fahrenheitTemperature = (celTemp * 9) / 5 + 32;
+  tempElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenhetLink.classList.remove("active");
+  let tempElement = document.querySelector("#temperature");
+  tempElement.innerHTML = Math.round(celTemp);
+}
+
 let dayElement = document.querySelector("#day");
 const currentTime = new Date();
 dayElement.innerHTML = formatDate(currentTime);
 
 let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("Submit", handleSubmit);
+searchForm.addEventListener("submit", handleSubmit);
+
+let celTemp = null;
+
+let fahrenhetLink = document.querySelector("#fahrenheit-link");
+fahrenhetLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Las Vegas");
