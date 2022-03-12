@@ -21,6 +21,14 @@ function formatDate(date) {
     "Saturday",
   ];
 
+  if (hours < 10) {
+    document.body.style.backgroundColor = "#fdffcd";
+  } else if (hours < 20) {
+    document.body.style.backgroundColor = "#ffebbb";
+  } else {
+    document.body.style.backgroundColor = "#a2a8d3";
+  }
+
   return `${days[dayIndex]} ${hours}:${minutes}`;
 }
 
