@@ -24,6 +24,59 @@ function formatDate(date) {
   return `${days[dayIndex]} ${hours}:${minutes}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+function displayForcast(response) {
+  let forcast = response.data.daily;
+
+  let forcastElementOne = document.querySelector("#forcast-one");
+  forcastElementOne.innerHTML = Math.round(forcast[1].temp.day);
+  let dayOne = document.querySelector("#day-one");
+  dayOne.innerHTML = formatDay(forcast[1].dt);
+
+  let forcastElementTwo = document.querySelector("#forcast-two");
+  forcastElementTwo.innerHTML = Math.round(forcast[2].temp.day);
+  let dayTwo = document.querySelector("#day-two");
+  dayTwo.innerHTML = formatDay(forcast[2].dt);
+
+  let forcastElementThree = document.querySelector("#forcast-three");
+  forcastElementThree.innerHTML = Math.round(forcast[3].temp.day);
+  let dayThree = document.querySelector("#day-three");
+  dayThree.innerHTML = formatDay(forcast[3].dt);
+
+  let forcastElementFour = document.querySelector("#forcast-four");
+  forcastElementFour.innerHTML = Math.round(forcast[4].temp.day);
+  let dayFour = document.querySelector("#day-four");
+  dayFour.innerHTML = formatDay(forcast[4].dt);
+
+  let forcastElementFive = document.querySelector("#forcast-five");
+  forcastElementFive.innerHTML = Math.round(forcast[5].temp.day);
+  let dayFive = document.querySelector("#day-five");
+  dayFive.innerHTML = formatDay(forcast[5].dt);
+
+  let forcastElementSix = document.querySelector("#forcast-six");
+  forcastElementSix.innerHTML = Math.round(forcast[6].temp.day);
+  let daySix = document.querySelector("#day-six");
+  daySix.innerHTML = formatDay(forcast[6].dt);
+
+  let forcastElementSeven = document.querySelector("#forcast-seven");
+  forcastElementSeven.innerHTML = Math.round(forcast[7].temp.day);
+  let daySeven = document.querySelector("#day-seven");
+  daySeven.innerHTML = formatDay(forcast[7].dt);
+}
+
+function getForcast(coordinates) {
+  let apiKey = "740cff2b03b6ff4fa9525993b36f2fc7";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayForcast);
+}
+
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -45,6 +98,8 @@ function displayTemperature(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForcast(response.data.coord);
 }
 
 function search(city) {
