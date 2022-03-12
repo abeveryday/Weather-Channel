@@ -42,14 +42,14 @@ function displayTemperature(response) {
   windElement.innerHTML = Math.round(response.data.wind.speed) + "km/h";
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function search(city) {
   let apiKey = "740cff2b03b6ff4fa9525993b36f2fc7";
-  let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(displayTemperature);
 }
 
